@@ -1,11 +1,4 @@
-import {
-  Category,
-  Question,
-  Answer,
-  PostQuestion,
-  PostMessage,
-  PostCategory,
-} from "./types";
+import { Category, Question, PostQuestion, PostCategory } from "./types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:8000";
 

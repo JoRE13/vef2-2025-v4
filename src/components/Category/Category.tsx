@@ -14,7 +14,7 @@ export function Category({ slug }: { slug: string }) {
   const [uiState, setUiState] = useState<UiState>("initial");
   const [category, setCategory] = useState<CategoryType | null>(null);
   const [questions, setQuestions] = useState<QuestionType[] | null>(null);
-  const [showAnswers, setShowAnswers] = useState<Boolean>(false);
+  const [showAnswers, setShowAnswers] = useState<boolean>(false);
 
   const toggleAnswers = () => {
     setShowAnswers((prev) => !prev);

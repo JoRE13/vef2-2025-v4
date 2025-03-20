@@ -71,7 +71,7 @@ export default function Form() {
         setError(true);
         setMessage(JSON.stringify(await result[1]));
       }
-    } catch (err) {
+    } catch {
       setError(true);
       setMessage(`Failed to post the question. Please try again.`);
     } finally {

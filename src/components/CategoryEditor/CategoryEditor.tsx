@@ -24,5 +24,5 @@ export default function CategoryEditor() {
     fetchCategories();
   }, []);
 
-  return null;
+  return [uiState, categories];
 }
