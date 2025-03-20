@@ -1,6 +1,6 @@
 "use client";
 
-import { PostCategory, UiState } from "@/types";
+import { UiState } from "@/types";
 import { useEffect, useState } from "react";
 import { QuestionsApi } from "@/api";
 import { Category } from "@/types";
@@ -12,7 +12,6 @@ export default function CategoryEditor() {
   const [postMessage, setPostMessage] = useState<string | null>(null);
   const [patchMessage, setPatchMessage] = useState<string | null>(null);
   const [deleteMessage, setDeleteMessage] = useState<string | null>(null);
-  const [data, setData] = useState<PostCategory | null>(null);
   const [categoryPost, setCategoryPost] = useState<string>("");
   const [postState, setPostState] = useState<UiState>("initial");
   const [categoryPatch, setCategoryPatch] = useState<string>("");
@@ -126,7 +125,8 @@ export default function CategoryEditor() {
                 id="postcategory"
                 value={categoryPost}
                 onChange={(e) => {
-                  setCategoryPost(e.target.value), setPostMessage(null);
+                  setCategoryPost(e.target.value);
+                  setPostMessage(null);
                 }}
                 required
               />
@@ -170,7 +170,8 @@ export default function CategoryEditor() {
                 id="patchcategory"
                 value={categoryPatch}
                 onChange={(e) => {
-                  setCategoryPatch(e.target.value), setPatchMessage(null);
+                  setCategoryPatch(e.target.value);
+                  setPatchMessage(null);
                 }}
                 required
               />
