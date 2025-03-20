@@ -115,8 +115,42 @@ export class QuestionsApi {
     return [false, message];
   }
 
+  async patchCategory(category: PostCategory, slug: string) {
+    const url = BASE_URL + `/categories/${slug}`;
+    let response: Response | undefined;
+    try {
+      console.log(url);
+      response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(category),
+      });
+    } catch (e) {
+      console.error("error fetching from api", url, e);
+      return [
+        false,
+        JSON.parse('{"message": "error fetching from api, try again"}'),
+      ];
+    }
+    if (!response) {
+      return [
+        false,
+        JSON.parse('{"message": "error fetching from api, try again"}'),
+      ];
+    }
+
+    if (response.ok) {
+      return [true, JSON.parse('{"message": "category successfully patched"}')];
+    }
+
+    const message = response.json();
+    return [false, message];
+  }
+
   async deleteCategory(slug: string) {
-    const url = BASE_URL + `categories/${slug}`;
+    const url = BASE_URL + `/categories/${slug}`;
     let response: Response | undefined;
     try {
       response = await fetch(url, {

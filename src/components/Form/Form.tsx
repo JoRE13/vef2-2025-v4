@@ -57,7 +57,7 @@ export default function Form() {
     try {
       const api = new QuestionsApi();
       const result = await api.postQuestion(data);
-      if (result[0]) {
+      if (await result[0]) {
         setMessage("Question uploaded successfully");
         setQuestion("");
         setCategory("");
@@ -86,6 +86,9 @@ export default function Form() {
       {error && <p style={{ color: "red" }}>{message}</p>}
       {!error && <p style={{ color: "green" }}>{message}</p>}
       {!categories && loading && <p>Hleður inn flokkum...</p>}
+      {!categories && !loading && (
+        <p>Nær ekki að sækja flokka, reynið aftur síðar.</p>
+      )}
 
       <div>
         <label htmlFor="question">Spurning</label>
