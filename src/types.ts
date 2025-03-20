@@ -1,27 +1,42 @@
-export type UiState = 'initial' | 'loading' | 'error' | 'data' | 'empty';
+export type UiState = "initial" | "loading" | "error" | "data" | "empty";
 
 export type Category = {
   id: string;
+  title: string;
   slug: string;
-  name: string;
-};
-
-export type Paginated<T> = {
-  data: T[];
-  total: number;
-  limit: number;
-  offset: number;
 };
 
 export type Answer = {
   id: number;
-  text: string;
+  answer: string;
   correct: boolean;
+  questionId: number;
 };
 
 export type Question = {
   id: number;
-  text: string;
+  question: string;
+  categoryId: number;
   answers: Answer[];
-  category: Category;
+};
+
+export type PostQuestion = {
+  question: string;
+  category: string;
+  answers: PostAnswer[];
+};
+
+export type PostAnswer = {
+  answer: string;
+  correct: boolean;
+};
+
+export type PostMessage = {
+  error?: unknown;
+  message?: string;
+  errors?: string;
+};
+
+export type PostCategory = {
+  title: string;
 };

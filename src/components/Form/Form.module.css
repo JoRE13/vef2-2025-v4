@@ -1,0 +1,22 @@
+.page {
+  background-color: moccasin;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  background-color: rgb(230, 82, 111);
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid rgb(238, 75, 75);
+}
+
+.button:hover {
+  background-color: rgb(238, 75, 75);
+}

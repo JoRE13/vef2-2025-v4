@@ -1,4 +1,31 @@
-
 .nav {
-  background-color: pink;
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+}
+.li {
+  border-bottom: 2px solid antiquewhite;
+}
+.li:hover {
+  border-bottom: 2px solid plum;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: antiquewhite;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  height: 100%;
 }

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { QuestionsApi } from '@/api';
-import { Category, Paginated, UiState } from '@/types';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import styles from './Categories.module.css';
+import { QuestionsApi } from "@/api";
+import { Category, UiState } from "@/types";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import styles from "./Categories.module.css";
 
 type Props = {
   title: string;
@@ -13,22 +13,20 @@ type Props = {
 };
 
 export default function Categories({ title }: Props) {
-  const [uiState, setUiState] = useState<UiState>('initial');
-  const [categories, setCategories] = useState<Paginated<Category> | null>(
-    null,
-  );
+  const [uiState, setUiState] = useState<UiState>("initial");
+  const [categories, setCategories] = useState<Array<Category> | null>(null);
 
   useEffect(() => {
     async function fetchData() {
-      setUiState('loading');
+      setUiState("loading");
 
       const api = new QuestionsApi();
       const categoriesResponse = await api.getCategories();
 
       if (!categoriesResponse) {
-        setUiState('error');
+        setUiState("error");
       } else {
-        setUiState('data');
+        setUiState("data");
         setCategories(categoriesResponse);
       }
     }
@@ -41,13 +39,16 @@ export default function Categories({ title }: Props) {
     <div className={styles.cats}>
       <h2>{title}</h2>
 
-      {uiState === 'loading' && <p>Sæki flokka</p>}
-      {uiState === 'error' && <p>Villa við að sækja flokka</p>}
-      {uiState === 'data' && (
-        <ul>
-          {categories?.data.map((category, index) => (
-            <li key={index}>
-              <Link href={`/flokkar/${category.slug}`}>{category.name}</Link>
+      {uiState === "loading" && <p>Sæki flokka</p>}
+      {uiState === "error" && <p>Villa við að sækja flokka</p>}
+      {uiState === "data" && (
+        <ul className={styles.ul}>
+          {categories?.map((category, index) => (
+            <li className={styles.li} key={index}>
+              <b>{category.title}</b>
+              <Link className={styles.link} href={`/flokkar/${category.slug}`}>
+                Skoða spurningar
+              </Link>
             </li>
           ))}
         </ul>
